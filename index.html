@@ -41,6 +41,9 @@
 
   section{position:relative;z-index:1}
 
+  /* Korean wraps at word boundaries, never mid-word */
+  .ko-title,.braid .ko,.peek .sub,.dedication .from .ko,.card .ko,footer .mark{word-break:keep-all}
+
   /* ---- bilingual braid (the signature) ---- */
   .braid .ko{font-family:var(--ko);font-weight:500;color:var(--ink)}
   .braid .en{font-family:var(--en);font-style:italic;color:var(--taupe)}
@@ -49,7 +52,7 @@
   /* ---- hero ---- */
   .hero{padding:88px 0 64px;text-align:center}
   .eyebrow{font-family:var(--en);letter-spacing:.22em;text-transform:uppercase;
-    font-size:.72rem;color:var(--taupe);margin-bottom:28px}
+    font-size:.75rem;color:var(--taupe);margin-bottom:28px}
   .hero .ko-title{font-family:var(--ko);font-weight:700;font-size:clamp(2rem,6vw,3.4rem);
     line-height:1.28;letter-spacing:-.01em}
   .hero .en-title{font-family:var(--en);font-style:italic;font-size:clamp(1.15rem,3.2vw,1.7rem);
@@ -63,8 +66,6 @@
     border-radius:10px;box-shadow:0 22px 50px -18px rgba(42,58,74,.38),0 2px 0 rgba(255,255,255,.4) inset;
     display:flex;align-items:center;justify-content:center;overflow:hidden}
   .cover-frame img{width:100%;height:100%;object-fit:cover;display:block}
-  .slot{color:var(--taupe);font-family:var(--en);font-size:.82rem;text-align:center;padding:20px;line-height:1.5}
-  .slot b{color:var(--ink);font-weight:600}
 
   .hero-line{margin:22px auto 34px;max-width:520px}
   .hero-line .ko{font-size:1.22rem}
@@ -92,7 +93,7 @@
     font-size:1.5rem;color:var(--ink);margin-bottom:6px}
   .peek .sub{text-align:center;font-family:var(--ko);color:var(--taupe);font-size:1rem;margin-bottom:40px}
   .spreads{display:grid;gap:26px}
-  .spread{aspect-ratio:2/1;border-radius:10px;overflow:hidden;
+  .spread{aspect-ratio:1600/823;border-radius:10px;overflow:hidden;
     background:linear-gradient(120deg,var(--wash),#EFDCE0);
     box-shadow:0 16px 40px -20px rgba(42,58,74,.4);display:flex;align-items:center;justify-content:center}
   .spread img{width:100%;height:100%;object-fit:cover;display:block}
@@ -110,9 +111,8 @@
   .card{background:rgba(255,255,255,.5);border:1px solid rgba(124,151,179,.28);
     border-radius:18px;padding:48px 34px;text-align:center;backdrop-filter:blur(2px);
     box-shadow:0 20px 50px -30px rgba(42,58,74,.4)}
-  .card .ko{font-family:var(--ko);font-size:1.35rem;font-weight:500}
-  .card .en{font-family:var(--en);font-style:italic;color:var(--denim);font-size:1.02rem;margin-top:8px}
-  .card p{color:var(--taupe);margin-top:18px;font-size:.98rem}
+  .card .ko{display:block;font-family:var(--ko);font-size:1.35rem;font-weight:500}
+  .card .en{display:block;font-family:var(--en);font-style:italic;color:var(--denim);font-size:1.02rem;margin-top:8px}
   .signup{display:flex;gap:10px;max-width:440px;margin:28px auto 0;flex-wrap:wrap;justify-content:center}
   .signup input{flex:1;min-width:220px;font-family:var(--en);font-size:1rem;padding:14px 18px;
     border:1px solid rgba(42,58,74,.2);border-radius:40px;background:var(--paper);color:var(--ink)}
@@ -121,7 +121,6 @@
     padding:14px 26px;border-radius:40px;cursor:pointer;transition:background .18s,transform .18s}
   .signup button:hover{background:#67839f;transform:translateY(-1px)}
   .signup button:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
-  .signup-note{font-size:.76rem;color:var(--taupe);margin-top:14px}
 
   /* ---- footer ---- */
   footer{padding:44px 0 60px;text-align:center;color:var(--taupe);font-family:var(--en);font-size:.86rem}
@@ -139,6 +138,24 @@
   @media(min-width:720px){
     .hero{padding:110px 0 80px}
     .spreads{grid-template-columns:1fr}
+  }
+
+  /* phones — tighter rhythm, no sub-12px type */
+  @media(max-width:640px){
+    .hero{padding:60px 0 52px}
+    .heartsec{padding:54px 0}
+    .heartsec .ko{font-size:1.3rem}
+    .peek{padding:48px 0}
+    .dedication{padding:60px 0}
+    .series{padding:54px 0 72px}
+    .card{padding:34px 20px}
+    .card .ko{font-size:1.15rem}
+    footer{padding:36px 0 48px}
+  }
+
+  /* touch devices — comfortable tap targets */
+  @media(pointer:coarse){
+    footer a{display:inline-flex;align-items:center;min-height:44px}
   }
 </style>
 </head>
@@ -191,10 +208,14 @@
     <h2 class="reveal">Peek inside</h2>
     <p class="sub reveal">책 속으로</p>
     <div class="spreads">
-      <!-- replace each with a real interior spread; keep aspect 2:1 -->
-      <div class="spread reveal"><span class="slot"><b>[ spread_1.jpg ]</b><br>interior spread · 2:1</span></div>
-      <div class="spread reveal"><span class="slot"><b>[ spread_2.jpg ]</b><br>interior spread · 2:1</span></div>
-      <div class="spread reveal"><span class="slot"><b>[ spread_3.jpg ]</b><br>interior spread · 2:1</span></div>
+      <div class="spread reveal">
+        <img src="spread-02.jpg" width="1600" height="823" loading="lazy"
+             alt="Interior spread: a child tucked under a blanket, her mother's Korean words wrapped around her.">
+      </div>
+      <div class="spread reveal">
+        <img src="spread-09.jpg" width="1600" height="823" loading="lazy"
+             alt="Interior spread: a child at the playground mixing Korean and English while her mother laughs.">
+      </div>
     </div>
   </div>
 </section>
@@ -217,14 +238,12 @@
     <div class="card">
       <span class="ko">리하의 이야기는 이제 시작이에요.</span>
       <span class="en">Liha's story is just beginning.</span>
-      <p>Book 1 of 10 · Be the first to know when the next book arrives.<br>다음 이야기가 나오면 가장 먼저 알려드릴게요.</p>
       <!-- connect this to your email provider (Mailchimp / ConvertKit / etc.) -->
       <div class="signup">
         <label for="email" style="position:absolute;left:-9999px">Email address</label>
-        <input id="email" type="email" placeholder="your@email.com · 이메일" autocomplete="email">
+        <input id="email" type="email" placeholder="your@email.com" autocomplete="email">
         <button type="button" onclick="alert('Connect this to your email list.')">Notify me</button>
       </div>
-      <p class="signup-note">No spam, ever. Just Liha's next book.</p>
     </div>
   </div>
 </section>
