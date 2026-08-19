@@ -121,6 +121,10 @@
     padding:14px 26px;border-radius:40px;cursor:pointer;transition:background .18s,transform .18s}
   .signup button:hover{background:#67839f;transform:translateY(-1px)}
   .signup button:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
+  .signup button[disabled]{opacity:.6;cursor:default}
+  .signup-status{min-height:1.4em;margin-top:16px;font-size:.86rem;color:var(--taupe)}
+  .signup-status .ko{font-family:var(--ko)}
+  .signup-status.err{color:var(--rose-deep)}
 
   /* ---- footer ---- */
   footer{padding:44px 0 60px;text-align:center;color:var(--taupe);font-family:var(--en);font-size:.86rem}
@@ -239,11 +243,12 @@
       <span class="ko">리하의 이야기는 이제 시작이에요.</span>
       <span class="en">Liha's story is just beginning.</span>
       <!-- connect this to your email provider (Mailchimp / ConvertKit / etc.) -->
-      <div class="signup">
+      <form class="signup" id="signup" novalidate>
         <label for="email" style="position:absolute;left:-9999px">Email address</label>
-        <input id="email" type="email" placeholder="your@email.com" autocomplete="email">
-        <button type="button" onclick="alert('Connect this to your email list.')">Notify me</button>
-      </div>
+        <input id="email" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
+        <button type="submit">Notify me</button>
+      </form>
+      <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
     </div>
   </div>
 </section>
@@ -260,6 +265,56 @@
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* Signup → Google Form → responses spreadsheet.
+     Both values come from the form's "Get pre-filled link":
+       .../forms/d/e/<FORM_ID>/viewform?...&entry.<ENTRY_ID>=test
+     The form must NOT require sign-in ("Limit to 1 response" and
+     "Collect email addresses" both force a Google login and will
+     reject anonymous posts from this page). */
+  const FORM_ID  = 'PASTE_FORM_ID';
+  const ENTRY_ID = 'PASTE_ENTRY_ID';
+
+  const form = document.getElementById('signup');
+  const statusEl = document.getElementById('signup-status');
+  const emailEl = document.getElementById('email');
+
+  function say(msg, isError){
+    statusEl.className = 'signup-status' + (isError ? ' err' : '');
+    statusEl.innerHTML = msg;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailEl.value.trim();
+    if (!emailEl.checkValidity() || !email) {
+      say('Please enter a valid email address.', true);
+      emailEl.focus();
+      return;
+    }
+    if (FORM_ID.startsWith('PASTE')) {
+      say('Signups open soon.');
+      return;
+    }
+    const btn = form.querySelector('button');
+    btn.disabled = true;
+    say('Sending…');
+    const body = new FormData();
+    body.append('entry.' + ENTRY_ID, email);
+    try {
+      // Google Forms sends no CORS headers, so the response is opaque:
+      // a resolved promise means the request left the browser, not that
+      // Google accepted it. Network failures still reject and are caught.
+      await fetch('https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse',
+                  {method:'POST', mode:'no-cors', body});
+      form.reset();
+      say('<span class="ko">고마워요! 다음 이야기가 나오면 알려드릴게요.</span><br>Thank you — we\'ll let you know when the next book arrives.');
+    } catch (err) {
+      say('Something went wrong. Please try again, or email <a href="mailto:hello@lihallc.com">hello@lihallc.com</a>.', true);
+    } finally {
+      btn.disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
