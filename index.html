@@ -123,6 +123,9 @@
   .signup button:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
   .signup button[disabled]{opacity:.6;cursor:default}
   .signup-status{min-height:1.4em;margin-top:16px;font-size:.86rem;color:var(--taupe)}
+  /* collapse while empty so the card stays vertically balanced; stays in the
+     DOM (not display:none) so the aria-live region still announces */
+  .signup-status:empty{min-height:0;margin-top:0}
   .signup-status .ko{font-family:var(--ko)}
   .signup-status.err{color:var(--rose-deep)}
 
@@ -254,7 +257,7 @@
 
 <footer>
   <div class="wrap">
-    <div>© 2026 Liha LLC · <a href="https://lihallc.com">lihallc.com</a></div>
+    <div>© 2026 Liha LLC · <a href="https://lihallc.com" target="_blank" rel="noopener">lihallc.com</a></div>
   </div>
 </footer>
 
