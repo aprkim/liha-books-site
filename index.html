@@ -74,7 +74,7 @@
   .cta{display:inline-flex;align-items:center;gap:10px;background:var(--rose);color:#fff;
     font-family:var(--en);font-size:1.05rem;text-decoration:none;padding:15px 30px;border-radius:40px;
     box-shadow:0 12px 26px -10px rgba(176,104,125,.7);transition:transform .18s,box-shadow .18s,background .18s}
-  .cta:hover{background:var(--rose-deep);transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(176,104,125,.8)}
+  a.cta:hover{background:var(--rose-deep);transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(176,104,125,.8)}
   .cta:focus-visible{outline:3px solid var(--denim);outline-offset:3px}
   .cta .price{opacity:.85;font-size:.92rem}
   .cta-note{display:block;margin-top:14px;font-size:.78rem;color:var(--taupe);letter-spacing:.02em}
@@ -156,13 +156,11 @@
     <p class="en-title reveal">Two Languages in My Heart</p>
 
     <span class="heart reveal" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.6-9.3-9C1 7.5 3 4.5 6.2 4.5c2 0 3.2 1.2 3.8 2.2.6-1 1.8-2.2 3.8-2.2C17 4.5 19 7.5 21.3 11 19 15.4 12 20 12 20Z" fill="#CE8095"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 20.7C6.2 16.2 2.4 12.6 2.4 8.9C2.4 5.9 4.7 3.8 7.4 3.8C9.3 3.8 10.9 4.8 12 6.4C13.1 4.8 14.7 3.8 16.6 3.8C19.3 3.8 21.6 5.9 21.6 8.9C21.6 12.6 17.8 16.2 12 20.7Z" fill="#CE8095"/></svg>
     </span>
 
-    <!-- COVER: replace src with your real cover file, keep the <img> -->
     <div class="cover-frame reveal">
-      <!-- <img src="cover.jpg" alt="Two Languages in My Heart — book cover"> -->
-      <span class="slot"><b>[ cover.jpg ]</b><br>drop your Book 1 cover here<br>(square, ~360px+)</span>
+      <img src="cover.jpg" alt="Two Languages in My Heart — book cover" width="1000" height="1010">
     </div>
 
     <div class="hero-line braid center reveal">
@@ -170,10 +168,11 @@
       <span class="en">A child who loves in one language and dreams in another.</span>
     </div>
 
-    <!-- BUY: paste Amazon URL into href when KDP goes live -->
-    <a class="cta reveal" href="#" aria-label="Buy Two Languages in My Heart on Amazon">
-      Buy on Amazon <span class="price">· $15.99</span>
-    </a>
+    <!-- BUY: when KDP goes live, swap this <span> back to
+         <a class="cta reveal" href="AMAZON_URL"> and say "Buy on Amazon" -->
+    <span class="cta reveal">
+      Coming soon <span class="price">· $15.99</span>
+    </span>
     <span class="cta-note reveal">Coming soon to Amazon · 곧 아마존에서 만나요</span>
 
     <p class="series-tag reveal">Book 1 of 10</p>
