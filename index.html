@@ -42,7 +42,7 @@
   section{position:relative;z-index:1}
 
   /* Korean wraps at word boundaries, never mid-word */
-  .ko-title,.braid .ko,.peek .sub,.dedication .from .ko,.card .ko,footer .mark{word-break:keep-all}
+  .ko-title,.braid .ko,.peek .sub,.dedication .from .ko,.card .ko{word-break:keep-all}
 
   /* ---- bilingual braid (the signature) ---- */
   .braid .ko{font-family:var(--ko);font-weight:500;color:var(--ink)}
@@ -128,7 +128,6 @@
 
   /* ---- footer ---- */
   footer{padding:44px 0 60px;text-align:center;color:var(--taupe);font-family:var(--en);font-size:.86rem}
-  footer .mark{font-family:var(--ko);color:var(--ink);font-size:1rem;letter-spacing:.04em;margin-bottom:8px}
   footer a{color:var(--denim);text-decoration:none}
   footer a:hover{text-decoration:underline}
 
@@ -255,8 +254,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="mark">리하 북스 · Liha Books</div>
-    <div>© 2026 Liha Books · <a href="https://lihallc.com">lihallc.com</a></div>
+    <div>© 2026 Liha LLC · <a href="https://lihallc.com">lihallc.com</a></div>
   </div>
 </footer>
 
