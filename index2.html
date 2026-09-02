@@ -163,6 +163,7 @@
   .face.is-out{opacity:0}
   #face-done{opacity:0}
   #face-done.is-in{opacity:1}
+  #face-done .done-title{display:block;font-family:var(--en);font-size:1.35rem;color:var(--ink)}
   #face-done .cta{margin-top:26px}
   .signup-note{margin-top:16px;font-size:.86rem;color:var(--taupe)}
   .signup-note .ko{font-family:var(--ko)}
@@ -304,9 +305,8 @@
         <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
       </div>
       <div class="face" id="face-done" hidden>
-        <span class="ko">고마워요! 여기 리하의 말이에요</span>
-        <span class="en">Thank you! Here are Liha's Words</span>
-        <a class="cta" href="lihas-words.pdf" target="_blank" rel="noopener">PDF 받기 · Download</a>
+        <span class="done-title">Thank you!</span>
+        <a class="cta" href="lihas-words.pdf" target="_blank" rel="noopener">PDF Download</a>
       </div>
     </div>
   </div>
