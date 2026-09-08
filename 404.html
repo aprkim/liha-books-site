@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-STR03MW9GG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-STR03MW9GG');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found · Liha Books</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5EFE4;      /* book paper */
+    --ink:#2A3A4A;        /* warm navy ink */
+    --rose:#CE8095;       /* Liha — pinafore */
+    --denim:#7C97B3;      /* Umma — jeans */
+    --taupe:#8A7C6E;      /* muted captions */
+    --en:Georgia,'Times New Roman',serif;
+    --ko:'Noto Serif KR',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--en);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+  }
+
+  /* soft watercolor atmosphere, same as the book page */
+  .bloom{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0}
+  .bloom.a{width:480px;height:480px;background:var(--denim);top:-170px;right:-150px;opacity:.22}
+  .bloom.b{width:420px;height:420px;background:#D8C7A8;bottom:-180px;left:-160px;opacity:.30}
+
+  main{position:relative;z-index:1;text-align:center;max-width:520px}
+
+  .heart{display:inline-block;margin-bottom:26px}
+  .heart svg{width:26px;height:26px;display:block}
+
+  .eyebrow{
+    font-family:var(--en);letter-spacing:.22em;text-transform:uppercase;
+    font-size:.75rem;color:var(--taupe);margin-bottom:22px;
+  }
+  h1{
+    font-family:var(--ko);font-weight:700;
+    font-size:clamp(1.5rem,5vw,2rem);line-height:1.4;
+    letter-spacing:-.01em;word-break:keep-all;
+  }
+  .en{
+    font-family:var(--en);font-style:italic;
+    font-size:1.08rem;color:var(--taupe);margin-top:14px;
+  }
+
+  .back{
+    display:inline-flex;align-items:center;justify-content:center;
+    margin-top:34px;
+    font-family:var(--en);font-size:1rem;
+    background:var(--denim);color:#fff;text-decoration:none;
+    padding:14px 28px;border-radius:40px;
+    box-shadow:0 12px 26px -10px rgba(124,151,179,.7);
+    transition:background .18s,transform .18s,box-shadow .18s;
+  }
+  .back:hover{background:#67839f;transform:translateY(-1px);
+    box-shadow:0 16px 30px -10px rgba(124,151,179,.8)}
+  .back:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+
+  @media(prefers-reduced-motion:reduce){
+    .back{transition:none}
+  }
+  @media(max-width:640px){
+    body{padding:40px 20px}
+  }
+</style>
+</head>
+<body>
+<div class="bloom a"></div>
+<div class="bloom b"></div>
+
+<main>
+  <span class="heart" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 20.7C6.2 16.2 2.4 12.6 2.4 8.9C2.4 5.9 4.7 3.8 7.4 3.8C9.3 3.8 10.9 4.8 12 6.4C13.1 4.8 14.7 3.8 16.6 3.8C19.3 3.8 21.6 5.9 21.6 8.9C21.6 12.6 17.8 16.2 12 20.7Z" fill="#CE8095"/></svg>
+  </span>
+
+  <p class="eyebrow">404</p>
+  <h1>이 페이지는 찾을 수 없어요.</h1>
+  <p class="en">We couldn't find that page.</p>
+
+  <a class="back" href="/">Back to the book</a>
+</main>
+
+</body>
+</html>
