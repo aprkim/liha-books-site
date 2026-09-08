@@ -142,6 +142,8 @@
     box-shadow:0 20px 50px -30px rgba(42,58,74,.4)}
   .card .ko{display:block;font-family:var(--ko);font-size:1.35rem;font-weight:500}
   .card .en{display:block;font-family:var(--en);font-style:italic;color:var(--denim);font-size:1.02rem;margin-top:8px}
+  .card .card-title{display:block;font-family:var(--en);font-size:1.35rem;font-weight:500;color:var(--ink)}
+  .signup-note{margin-top:16px;font-size:.86rem;color:var(--taupe)}
   .signup{display:flex;gap:10px;max-width:440px;margin:28px auto 0;flex-wrap:wrap;justify-content:center}
   .signup input{flex:1;min-width:220px;font-family:var(--en);font-size:1rem;padding:14px 18px;
     border:1px solid rgba(42,58,74,.2);border-radius:40px;background:var(--paper);color:var(--ink)}
@@ -185,6 +187,7 @@
     .series{padding:54px 0 72px}
     .card{padding:34px 20px}
     .card .ko{font-size:1.15rem}
+    .card .card-title{font-size:1.15rem}
     footer{padding:36px 0 48px}
   }
 
@@ -271,14 +274,14 @@
 <section class="series">
   <div class="wrap reveal">
     <div class="card">
-      <span class="ko">리하의 이야기는 이제 시작입니다.</span>
-      <span class="en">Liha's story is just beginning.</span>
+      <span class="card-title">Liha's story is just beginning.</span>
       <!-- connect this to your email provider (Mailchimp / ConvertKit / etc.) -->
       <form class="signup" id="signup" novalidate>
         <label for="email" style="position:absolute;left:-9999px">Email address</label>
         <input id="email" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
-        <button type="submit">Notify me</button>
+        <button type="submit">Get the printable</button>
       </form>
+      <p class="signup-note">We'll send you Liha's Words printable and news from the series.</p>
       <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
     </div>
   </div>
