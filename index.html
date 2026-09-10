@@ -379,6 +379,7 @@
       // Google accepted it. Network failures still reject and are caught.
       await fetch('https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse',
                   {method:'POST', mode:'no-cors', body});
+      gtag('event', 'signup_submit');
       form.reset();
       showDownload();
     } catch (err) {
