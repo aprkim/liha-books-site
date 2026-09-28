@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://books.lihallc.com/sitemap.xml
