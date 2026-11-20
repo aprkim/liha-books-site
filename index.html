@@ -258,6 +258,11 @@
   footer{padding:44px 0 60px;text-align:center;color:var(--taupe);font-family:var(--en);font-size:.86rem}
   footer a{color:var(--denim);text-decoration:none}
   footer a:hover{text-decoration:underline}
+  .follow{margin-bottom:22px}
+  .follow-label{font-size:.78rem;letter-spacing:.04em;margin-bottom:6px}
+  .follow-label .ko{font-family:var(--ko)}
+  footer a.ig{display:inline-flex;align-items:center;gap:7px}
+  .ig svg{width:16px;height:16px;display:block}
 
   /* reveal */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
@@ -415,6 +420,11 @@
 
 <footer>
   <div class="wrap">
+    <div class="follow">
+      <p class="follow-label"><span class="ko">책 소식</span> · Follow along</p>
+      <a class="ig" href="https://www.instagram.com/lihabooks/" target="_blank" rel="noopener" aria-label="Instagram @lihabooks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>@lihabooks</a>
+    </div>
     <div>© 2026 Liha LLC · <a href="https://lihallc.com" target="_blank" rel="noopener">lihallc.com</a></div>
   </div>
 </footer>
