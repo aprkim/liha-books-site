@@ -196,6 +196,11 @@
     background:linear-gradient(120deg,var(--wash),#EFDCE0);
     box-shadow:0 16px 40px -20px rgba(42,58,74,.4);display:flex;align-items:center;justify-content:center}
   .spread img{width:100%;height:100%;object-fit:cover;display:block}
+  .peek-video{margin:0;aspect-ratio:16/9;border-radius:10px;overflow:hidden;
+    background:linear-gradient(120deg,var(--wash),#EFDCE0);
+    box-shadow:0 16px 40px -20px rgba(42,58,74,.4)}
+  .peek-video video{width:100%;height:100%;object-fit:cover;display:block}
+  .peek-buy{text-align:center;margin:34px 0 40px}
 
 
   /* ---- about the book ---- */
@@ -350,6 +355,17 @@
   <div class="wrap">
     <h2 class="reveal">Peek inside</h2>
     <p class="sub reveal">책 속으로</p>
+    <figure class="peek-video reveal">
+      <video controls playsinline preload="none" poster="liha-peek-inside-poster.jpg"
+             width="1920" height="1080"
+             aria-label="A 36-second look inside Two Languages in My Heart">
+        <source src="liha-peek-inside.mp4" type="video/mp4">
+        A 36-second look inside Two Languages in My Heart.
+      </video>
+    </figure>
+    <div class="peek-buy reveal">
+      <a class="cta" data-amazon-buy target="_blank" rel="noopener">Buy on Amazon</a>
+    </div>
     <div class="spreads">
       <div class="spread reveal">
         <img src="spread-02.jpg" width="1600" height="823" loading="lazy"
@@ -408,6 +424,16 @@
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* Second "Buy on Amazon" button: take the URL from the hero button so
+     there is only one place to change it. */
+  const heroBuy = document.querySelector('.hero a.cta');
+  document.querySelectorAll('a[data-amazon-buy]').forEach(a => {
+    a.href = heroBuy.href;
+    a.addEventListener('click', () => {
+      if (typeof gtag === 'function') gtag('event', 'buy_amazon_click', {link_location: 'peek_inside'});
+    });
+  });
 
   /* Signup → Google Form → responses spreadsheet.
      Both values come from the form's "Get pre-filled link":
